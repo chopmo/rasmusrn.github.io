@@ -1,0 +1,68 @@
+body {
+  width: 950px;
+  margin: 1.4rem auto 0 auto;
+  color: #3f3d30;
+  background: #f7eedf;
+  position: relative;
+}
+
+body, input, textarea {
+  font-family: Palatino, serif;
+  font-size: 1.3rem;
+}
+
+input, textarea {
+  background: #f9f6f2;
+  border: 0.1rem #beb4a2 solid;
+}
+
+input[type=submit] {
+  border: none;
+  background: #d34343;
+  color: #feeded;
+}
+
+body, input, textarea {
+  padding: 0.6rem;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1.3rem;
+  padding-bottom: 0.35rem;
+  border-bottom: #d34343 solid 1rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+}
+
+p {
+  margin-bottom: 1.2rem;
+  line-height: 1.8rem;
+}
+
+ol {
+  list-style: square;
+  padding-left: 1.3em;
+  margin: 1.3rem 0;
+}
+
+ol li {
+  padding: 0.2rem 0;
+}
+
+a {
+  color: #8C6B4A;
+}
+
+table td {
+  padding: 0.6rem 0;
+  border-top: 0.15rem #beb4a2 solid;
+}
+
+table tr:last-child td {
+  border-bottom: 0.15rem #beb4a2 solid;
+}

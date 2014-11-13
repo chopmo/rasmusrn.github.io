@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<h1>Tickleworks</h1>
+<p>Hello you! I hope you like game programming and elegant code. Because that's what this blog is about.</p>
+
+<p>
+  My name is Rasmus.
+  I love writing game software from scratch and doing my best to get the details just right.
+  This approach the game development is often painstakinly slow.
+  The reason I enjoy it anyway is twofold.
+  Firstly, it forces me to learn wonderful ideas and concepts about subjects I'm very passionate about.
+  And secondly, this mindset leads to products I'm deeply proud of.
+</p>
+
+<p>
+  Basically, doing it "the hard way" is what makes me happy :-)
+</p>
+
+<p>
+  While I'm certainly not an expert in either of these fields, I've written a lot of
+  entity/component systems, AI's, path finding systems, physics simulators, renderers, event systems, and realtime network communication systems.
+  Basically most things related to game development.
+  I'm particularly interested in the challenge of how we can connect all these systems in useful and elegant ways.
+</p>
+
+<p>Tickleworks is a blog where I write about my latest experiments and thoughts.</p>
+
+<p>
+  Twitter: <a href="https://twitter.com/rasmusrn">@rasmusrn</a>,
+  email: <a href="mailto:&#114;&#097;&#115;&#109;&#117;&#115;&#114;&#110;&#105;&#101;&#108;&#115;&#101;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#114;&#097;&#115;&#109;&#117;&#115;&#114;&#110;&#105;&#101;&#108;&#115;&#101;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>,
+  blog feed: <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>.
+</p>
+
+<h2>Latest posts</h2>
+<ol>
+  {% for post in site.posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ol>
