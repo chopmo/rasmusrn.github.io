@@ -1,9 +1,8 @@
 # Site settings
 title: Tickleworks
-description: > # this means to ignore newlines until "baseurl:"
+description: >
   A blog about everything game programming related: AI, rendering,
   realtime networking, engine architecture, math, physics, etc.
-baseurl: "/" # the subpath of your site, e.g. /blog/
 url: "http://www.tickleworks.dk" # the base hostname & protocol for your site
 permalink: /:title.html
 
