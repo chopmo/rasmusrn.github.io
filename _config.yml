@@ -5,7 +5,7 @@ description: > # this means to ignore newlines until "baseurl:"
   realtime networking, engine architecture, math, physics, etc.
 baseurl: "/" # the subpath of your site, e.g. /blog/
 url: "http://www.tickleworks.dk" # the base hostname & protocol for your site
-github_username:  jekyll
+permalink: /:title.html
 
 # Build settings
 markdown: kramdown
