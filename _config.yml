@@ -8,4 +8,4 @@ permalink: /:title.html
 
 # Build settings
 markdown: kramdown
-highlighter: rouge
+highlighter: pygments
