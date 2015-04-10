@@ -39,12 +39,9 @@ h2 {
   margin-bottom: 1.2rem;
 }
 
-p, pre {
-  margin-bottom: 1.2rem;
-}
-
 p {
   line-height: 1.8rem;
+  margin-bottom: 1.2rem;
 }
 
 ol {
@@ -74,11 +71,8 @@ em {
   font-style: italic;
 }
 
-pre {
-  display: block;
-  padding: 20px;
-}
-
-code, pre {
-  background: grey;
+code {
+  background: #232323;
+  color: #e6e1dc;
+  padding: 1px 4px;
 }
