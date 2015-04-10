@@ -3,7 +3,7 @@ title: Binsai
 description: >
   A blog about everything game programming related: AI, rendering,
   realtime networking, engine architecture, math, physics, etc.
-url: "http://www.tickleworks.dk" # the base hostname & protocol for your site
+url: "http://www.binsai.dk" # the base hostname & protocol for your site
 permalink: /:title.html
 
 # Build settings

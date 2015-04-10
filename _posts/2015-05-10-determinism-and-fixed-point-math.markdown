@@ -3,7 +3,11 @@ title:  "Determinism and fixed point math"
 layout: "post"
 date:   2015-05-10 10:10:00
 ---
-In the game I'm currently working on you control one character a bit like in the Diablo games. Last week I realized the game would be so much better if you'd control a group of characters instead of just one. I decided I had to give it a try.
+In the game I'm currently working on you control a single character a bit like in the Diablo games.
+
+![Alt text](/assets/images/flowstone-ss.jpg)
+
+Last week I realized the game would be so much better if you'd control a group of characters instead of just one. I decided I had to give it a try.
 
 For technical reasons, this meant I'd have to use the socalled *lockstep* network synchronization technique. Most RTS games uses it because it lets you network hundreds, if not thousands of entities. It's awesome, actually. Normally, the game server simulation the game and send updates to clients. But with the lockstep technique, each client simulate the entire game themself so the server doesn't have to send state updates.
 
