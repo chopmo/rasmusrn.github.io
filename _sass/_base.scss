@@ -27,10 +27,10 @@ body, input, textarea {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 1.3rem;
   padding-bottom: 0.35rem;
-  border-bottom: #d34343 solid 1rem;
+  border-bottom: #d34343 solid 0.8rem;
 }
 
 h2 {
@@ -39,8 +39,11 @@ h2 {
   margin-bottom: 1.2rem;
 }
 
-p {
+p, pre {
   margin-bottom: 1.2rem;
+}
+
+p {
   line-height: 1.8rem;
 }
 
@@ -65,4 +68,17 @@ table td {
 
 table tr:last-child td {
   border-bottom: 0.15rem #beb4a2 solid;
+}
+
+em {
+  font-style: italic;
+}
+
+pre {
+  display: block;
+  padding: 20px;
+}
+
+code, pre {
+  background: grey;
 }
