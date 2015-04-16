@@ -9,11 +9,13 @@ In the game I'm currently working on you control a single character a bit like i
 
 Last week I realized the game would be so much better if you'd control a group of characters instead of just one. I decided I had to give it a try.
 
-For technical reasons, this meant I'd have to use the socalled *lockstep* network synchronization technique. Most RTS games uses it because it lets you network hundreds, if not thousands of entities. It's awesome, actually. Normally, the game server simulation the game and send updates to clients. But with the lockstep technique, each client simulate the entire game themself so the server doesn't have to send state updates.
+For technical reasons, this meant I'd have to use the socalled *lockstep* network synchronization technique. Most RTS games uses it because it lets you network hundreds, if not thousands of entities. It's awesome, actually. Normally, the game server simulates the game and send updates to clients. But with the lockstep technique, each client simulate the entire game themself so the server doesn't have to send state updates.
 
-But it comes at price: your game state simulation must be 100% deterministic down to the very last bit. Even the tiniest differences would accumulate over time and cause problems. It's not as easy as it may sound.
+But it comes at a price: your game state simulation must be 100% deterministic down to the very last bit. Even the tiniest differences would accumulate over time and cause problems. And achieving full determinism is tricky.
 
 Most simulations rely on floating point math. And even though floating point math is [standardized](http://en.wikipedia.org/wiki/IEEE_floating_point) it turns out to be [rather difficult](http://gafferongames.com/networking-for-game-programmers/floating-point-determinism/) to get deterministic behavior across operation systems, compilers, and CPU architectures. And even if you do manage to get basic arithmetic working properly, there's also trancendental functions (`sin()`, `cos()`, etc.).
+
+[eksempel på rounding error eller trancendental fejl - jeg tænker de tmåske er svært for læseren at forestille sig hvad ikke-determinism reelt set *er* i denne kontekst]
 
 I deemed it a battle not worth fighting. Instead, I learned that there's another way to do real number arithmetic using only integer CPU operations. This is great because integer operations are deterministic out of the box across compilers, OSs, CPUs. Determinisn and real number support - that's exactly what I was looking for! Yay!
 
@@ -40,7 +42,7 @@ Fixie::Num c = a/b;
 printf("%f\n", (float)c);
 {% endhighlight %}
 
-This will print the correct results even though no floating point math was used. And the same goes for addition, subtraction, and multiplication. As the time of this writing I have implemented `sqrt()`, `floor()`, `sin()`, `cos()`, and `acos()`.
+This will print the correct results even though no floating point math was used. And the same goes for addition, subtraction, and multiplication. At the time of this writing I have also implemented `sqrt()`, `floor()`, `sin()`, `cos()`, and `acos()`.
 
 As an example of how this `Num` class works, here you can see how addition is implemented:
 
@@ -81,7 +83,7 @@ However, it is important to note that fixed point math has limitations. They gen
 
 For this reason I'll probably only use Fixie in parts of the game where I need determinisn, that is the "state simulation", e.g. physics, AI, etc. Rendering and animation is not required to be synchronized down the last bit, so here I'll stick with good old floating point (`float`, `double`, etc.).
 
-Full source of is available on GitHub [here](https://github.com/rasmusrn/fixie).
+Full source of Fixie is available on GitHub [here](https://github.com/rasmusrn/fixie).
 
 Learning about fixed point math and implementing Fixie have been great fun. Next I need to actually use it with my state simulation logic. When the state simulation is fully deterministic, I should be able to synchronize thousands of entities across the network. It will be glorious!
 
