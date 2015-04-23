@@ -1,9 +1,9 @@
 # Site settings
-title: Binsai
+title: Bonsai7
 description: >
   A blog about everything game programming related: AI, rendering,
   realtime networking, engine architecture, math, physics, etc.
-url: "http://www.binsai.dk" # the base hostname & protocol for your site
+url: "http://www.bonsai7.dk" # the base hostname & protocol for your site
 permalink: /:title.html
 
 # Build settings
