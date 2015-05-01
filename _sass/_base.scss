@@ -1,6 +1,6 @@
 body {
   width: 950px;
-  margin: 1.4rem auto 0 auto;
+  margin: 0 auto 0 auto;
   color: #3f3d30;
   background: #f7eedf;
   position: relative;
@@ -28,6 +28,7 @@ body, input, textarea {
 
 h1 {
   font-size: 3.5rem;
+  margin-top: 1.4rem;
   margin-bottom: 1.3rem;
   padding-bottom: 0.35rem;
   border-bottom: #d34343 solid 0.8rem;
