@@ -1,7 +1,7 @@
 ---
 title:  "Hello world"
 layout: "post"
-date:   2015-06-01 14:00:00
+date:   2015-05-04 14:00:00
 ---
 I think I was 12 years old when it started. Somehow, I'd managed to get <a href="http://php.net">PHP</a> up and running and made a very simple web page that asked "What is your name?" I typed "Rasmus" and hit enter. My script replied "Hi Rasmus". At that moment something clicked in my brain. I could build anything with this computer-machine-thingy!
 
