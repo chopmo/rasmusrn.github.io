@@ -19,7 +19,10 @@ After a year or so my girlfriend was going crazy because I never left our apartm
 
 As my understanding of game development grew, I slowly ventured into building actual prototypes and small games.
 
-<img src="/assets/images/early-dino-hatch-concept-art.jpg">
+<p class="photo">
+  <img src="/assets/images/early-dino-hatch-concept-art.jpg"><br>
+  Early concept art
+</p>
 
 It turns out the experienced developers are right: game development *is* hard. But after countless prototypes and failed game projects, I'm now finally on the right track to build a fun game. At least I think I am. With this project, I feel really hopeful about both the concept and the implementation. Here's a screenshot of the game:
 
