@@ -3,7 +3,7 @@ title:  "Hello world"
 layout: "post"
 date:   2015-06-01 14:00:00
 ---
-I think I was 12 years old when it started. Somehow, I'd managed to get <a href="http://php.net">PHP</a> up'n running and made a very simple web page that asked "What is your name?" I typed "Rasmus" and hit enter. My script replied "Hi Rasmus". At that moment something clicked in my brain. I build anything with this computer-machine-thingy!
+I think I was 12 years old when it started. Somehow, I'd managed to get <a href="http://php.net">PHP</a> up'n running and made a very simple web page that asked "What is your name?" I typed "Rasmus" and hit enter. My script replied "Hi Rasmus". At that moment something clicked in my brain. I could build anything with this computer-machine-thingy!
 
 <img src="/assets/images/rainbow.jpg" style="width: 300px">
 
