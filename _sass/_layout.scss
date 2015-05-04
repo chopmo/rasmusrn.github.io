@@ -1,3 +1,9 @@
 body > footer {
   border-top: 3px solid #C8C1B9;
+
+  .newsletter {
+    input[name=EMAIL] {
+      width: 300px;
+    }
+  }
 }
