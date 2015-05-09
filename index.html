@@ -10,10 +10,10 @@ layout: default
 <p><img src="/assets/images/flowstone-ss.jpg" style="height: 300px"></p>
 
 <h2>Latest posts</h2>
-<ol>
+<ul>
   {% for post in site.posts %}
     {% unless post.private %}
       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endunless %}
   {% endfor %}
-</ol>
+</ul>
