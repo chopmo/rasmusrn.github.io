@@ -80,7 +80,7 @@ void testSmallMap() {
 
 Just look at that! I can now refactor to my heart's content and still be 99% sure everything works. Unit testing is awesome. End of discussion.
 
-And finally for this post's grand finale. A video!
+And at long last for this post's grand finale. A video!
 
 <p class="photo">
   <img src="/assets/images/pathfinding-demo.gif"><br>
