@@ -48,7 +48,7 @@ You can insert and update fields. Whenever you `pop()` you get the field index f
 
 I implemented the containers in a [data-oriented](http://gamesfromwithin.com/data-oriented-design) way. No dynamic memory allocation, no pointers, and a sensible data layout tailored to my exact use-case. On the downside, this means my structures aren't reuseable in other contexts but that's OK.
 
-I [learned](http://cglab.ca/~morin/misc/arraylayout/) later that the [B-tree](http://en.wikipedia.org/wiki/B-tree) structure may be more performant than a binary heap. B-trees store more nodes at each level. This increases the chance of memory cache re-use which can make a big difference on modern hardware. Will definitely consider that the next time I face implementating an priority queue.
+I [learned](http://cglab.ca/~morin/misc/arraylayout/) later that the [B-tree](http://en.wikipedia.org/wiki/B-tree) structure may be more performant than a binary heap. B-trees store more nodes at each level. This increases the chance of memory cache re-use which can make a big difference on modern hardware. I will definitely consider this the next time I face implementing a priority queue.
 
 Sometimes test driven development can be hard to apply to game development. But here, the method shined beautifully! Each data structure got its own unit test and when all passed I continued to write a unit test for the A* implementation itself. Here's an example from the A* unit test:
 
