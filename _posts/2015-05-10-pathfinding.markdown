@@ -27,7 +27,7 @@ A* does a lot of book-keeping. While it searches the map it is continously stori
 For the containers I could use [C++'s STL](http://en.wikipedia.org/wiki/Standard_Template_Library). As you may know, a [lot](http://gamedev.stackexchange.com/questions/268/stl-for-games-yea-or-nay) has been [said](http://simonask.tumblr.com/post/59763277483/why-stl-isnt-great-for-game-development) about STL, especially in game development circles. Personally, I don't like it for two reasons:
 
 * It's too general. They try to do everything and end up being really good at nothing.
-* It's too OOP-based for my taste. Not big fan of constructors, destructors, RAII, etc.
+* It's too OOP-based for my taste. I am not big fan of constructors, destructors, RAII, etc.
 
 So I decided to write my own containers. This was the first time I had to actually implement a *hash map* and a *priority queue*. It was very interesting to learn how the ubiquitous map structure actually works at a fundamental level. If you like to know more, I recommend [this lesson](http://c.learncodethehardway.org/book/ex37.html) by Zed Shaw. I built the priority queue as a binary heap inspired by [this](http://stackoverflow.com/questions/17009056/how-to-implement-ologn-decrease-key-operation-for-min-heap-based-priority-queu).
 
