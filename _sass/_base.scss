@@ -45,14 +45,21 @@ p {
   margin-bottom: 1.2rem;
 }
 
-ol {
-  list-style: square;
+ol, ul {
   padding-left: 1.3em;
-  margin: 1.3rem 0;
+  margin: 1.5rem 0;
+
+  li {
+    padding: 0.4rem 0;
+  }
 }
 
-ol li {
-  padding: 0.2rem 0;
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: square;
 }
 
 a {
