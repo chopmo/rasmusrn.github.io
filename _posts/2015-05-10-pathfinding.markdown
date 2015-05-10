@@ -22,7 +22,7 @@ So given this autonomous nature of the block dudes, I needed a pretty efficient 
 
 I decided to use the popular [A* algorithm](http://en.wikipedia.org/wiki/A*_search_algorithm) with a grid map representation. The game world is 3D, but as far as the pathfinding is concerned, a 2D grid will do just fine and it's way simpler to manage.
 
-A* does a lot of book-keeping. While it searches the map it is continously storing information about each potential path. This information is stored in various specific data containers. The overall performance of the algorithm is to a large extend determined by the design and implementation of these containers.
+A* does a lot of book-keeping. While it searches the map it is continously storing information about each potential path. This information is stored in various specific data containers. The overall performance of the algorithm is to a large extent determined by the design and implementation of these containers.
 
 For the containers I could use [C++'s STL](http://en.wikipedia.org/wiki/Standard_Template_Library). As you may know, a [lot](http://gamedev.stackexchange.com/questions/268/stl-for-games-yea-or-nay) has been [said](http://simonask.tumblr.com/post/59763277483/why-stl-isnt-great-for-game-development) about STL, especially in game development circles. Personally, I don't like it for two reasons:
 
@@ -46,7 +46,7 @@ public:
 
 You can insert and update fields. Whenever you `pop()` you get the field index for the lowest priority.
 
-I implemented the containers in a [data-oriented](http://gamesfromwithin.com/data-oriented-design) way. No dynamic memory allocation, no pointers, and a sensible data layout tailored to my exact use-case. On the downside, this means my structures aren't reuseable in other contexts but that's OK.
+I implemented the containers in a [data-oriented](http://gamesfromwithin.com/data-oriented-design) way. No dynamic memory allocation, no pointers, and a sensible data layout tailored to my exact use-case. On the downside, this means my structures aren't reusable in other contexts but that's OK.
 
 I [learned](http://cglab.ca/~morin/misc/arraylayout/) later that the [B-tree](http://en.wikipedia.org/wiki/B-tree) structure may be more performant than a binary heap. B-trees store more nodes at each level. This increases the chance of memory cache re-use which can make a big difference on modern hardware. I will definitely consider this the next time I face implementing a priority queue.
 
