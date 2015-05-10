@@ -1,5 +1,5 @@
 ---
-title:  "Pathfinding"
+title:  "Pathfinding basics"
 layout: "post"
 date:   2015-05-10 12:00:00
 private: true
