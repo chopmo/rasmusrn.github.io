@@ -20,6 +20,7 @@ So given this autonomous nature of the block dudes, I needed a pretty efficient 
   I like to work from coffee shops in the evening. Change of scenery is good for the mind.
 </p>
 
+## Supporting data stuctures
 I decided to use the popular [A* algorithm](http://en.wikipedia.org/wiki/A*_search_algorithm) with a grid map representation. The game world is 3D, but as far as the pathfinding is concerned, a 2D grid will do just fine and it's way simpler to manage.
 
 A* does a lot of book-keeping. While it searches the map it is continously storing information about each potential path. This information is stored in various specific data containers. The overall performance of the algorithm is to a large extent determined by the design and implementation of these containers.
@@ -50,6 +51,7 @@ I implemented the containers in a [data-oriented](http://gamesfromwithin.com/dat
 
 I [learned](http://cglab.ca/~morin/misc/arraylayout/) later that the [B-tree](http://en.wikipedia.org/wiki/B-tree) structure may be more performant than a binary heap. B-trees store more nodes at each level. This increases the chance of memory cache re-use which can make a big difference on modern hardware. I will definitely consider this the next time I face implementing a priority queue.
 
+## Test driving
 Sometimes test driven development can be hard to apply to game development. But here, the method shined beautifully! Each data structure got its own unit test and when all passed I continued to write a unit test for the A* implementation itself. Here's an example from the A* unit test:
 
 {% highlight cpp %}
@@ -87,6 +89,7 @@ And at long last for this post's grand finale. A video!
   The weird back and forth behavior is due to a known bug.
 </p>
 
+## We're not done
 Integrating pathfinding with the rest of the game is also a very interesting subject. How should the block dudes transform the path into movement/rotation? How do you manage changes in the terrain? What if an obstacle rises after the path has been calculated? Etc. Maybe that should be the topic for the next post.
 
 Well, that is it for now. I hope you enjoyed reading. I am still new at this devlogging thing and very curious to hear what you think. Feel free to drop me an <a href="mailto:rasmusrnielsen@gmail.com">email</a> with any feedback you might have. I would love to hear from you.
