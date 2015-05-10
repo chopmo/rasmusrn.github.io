@@ -11,7 +11,7 @@ In my game you control a small society of block people. But you do not control t
   Admittedly, this doesn't look much like a "society" yet
 </p>
 
-Exactly who does what and when is up to the block people themselves. They try to carry out your high level commands in the most effective manner they can "think" of. This control scheme is also seen in [The Settlers](http://en.wikipedia.org/wiki/The_Settlers) and [Banished](http://www.shiningrocksoftware.com/game/). Great games. The idea is to relieve the commander (that's you!) from tedious micro-management to allow for more focus on the grand strategy.
+Exactly who does what and when is up to the block people themselves. They try to carry out your high level commands in the most effective manner they can "think" of. This control scheme is also seen in [The Settlers](http://en.wikipedia.org/wiki/The_Settlers) and [Banished](http://www.shiningrocksoftware.com/game/). Great games. The idea is to relieve the commander (that's you!) from tedious micro-management, thereby allowing for more focus on the grand strategy.
 
 So given this autonomous nature of the block dudes, I needed a pretty efficient pathfinding system. I had implemented pathfinding several times before, but I couldn't quite remember all the details. [This awesome article from Red Blob Games](http://www.redblobgames.com/pathfinding/a-star/introduction.html) got me up to speed. Thanks [Amit](https://twitter.com/redblobgames)!
 
