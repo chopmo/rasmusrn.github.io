@@ -93,6 +93,6 @@ And at long last for this post's grand finale. A video!
 
 ## Integration
 
-Integrating pathfinding into the game is also a very interesting subject. How should the block dudes transform the path into movement/rotation? How should changes in the terrain be managed? What if an obstacle appears after the path has been calculated? Etc. Maybe that should be the topic for the next post.
+Integrating pathfinding into the game is also a very interesting subject. How should the block dudes transform a path into movement/rotation? How should changes in the terrain be managed? What if an obstacle appears after the path has been calculated? Etc. Maybe that should be the topic for the next post.
 
 Well, that's it for now. I hope you enjoyed reading. I am still new at this devlogging thing and very curious to hear what you think. Feel free to drop me an email with any feedback you might have (address below). I would love to hear from you.
