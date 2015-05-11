@@ -46,7 +46,7 @@ public:
 };
 {% endhighlight %}
 
-The map grid is made up of squares. I call them *fields*. Hence, `MapFieldIndex` is a number representing a particular field. Whenever you insert or update a field in the queue, you also specify a *priority*. `pop()` gives you the field index for the field with the lowest priority in the queue. The A* algorithm can use this data structure to choose a "reasonable" field to examine next rather than a random one. This makes the search much faster in most cases.
+The map grid is made up of squares. I call them *fields*. Hence, `MapFieldIndex` is a number representing a particular field. When you insert or update a field in the queue, you also specify a *priority*. The method `pop()` returns the field index for the field with the lowest priority in the queue. The A* algorithm uses this behavior to choose a "reasonable" field to examine next rather than a random one. This makes the search much faster in most cases.
 
 I implemented the containers in a [data-oriented](http://gamesfromwithin.com/data-oriented-design) way. That means no dynamic memory allocation, no pointers, and a sensible data layout tailored to my exact use-case. On the downside, this means that my structures aren't reusable in other contexts but that's okay.
 
