@@ -54,7 +54,7 @@ I later [learned](http://cglab.ca/~morin/misc/arraylayout/) that the *[B-tree](h
 
 ## Unit testing
 
-Test driven development can sometimes can be hard to apply to game development. Here however, this technique works beautifully! I wrote a unit test for each data structure and once all passed I continued to write a unit test for the A* implementation itself. Here's an example from the A* unit test:
+Test driven development can sometimes can be hard to apply to game development. Here however, this technique works beautifully! I wrote a unit test for each data structure and once they all passed I continued to write a unit test for the A* implementation itself. Here's an example from the A* unit test:
 
 {% highlight cpp %}
 void testSmallMap() {
