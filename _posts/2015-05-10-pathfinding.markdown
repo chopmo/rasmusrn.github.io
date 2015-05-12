@@ -86,7 +86,7 @@ void testSmallMap() {
 }
 {% endhighlight %}
 
-Just look at that! Now I can refactor to my heart's content and still be 99% sure that everything works. Unit testing is awesome. End of discussion.
+Just look at that! I set up a map and fill it with data. Next I run the `aStar()` function to generate a `MapSearchResult`. At the end I examine this result to ensure it is what I expected. Now I can refactor to my heart's content and still be 99% sure that everything works. Unit testing is awesome. End of discussion.
 
 And at long last for this post's grand finale. A video!
 
