@@ -4,11 +4,15 @@ layout: "post"
 date:   2015-05-10 12:00:00
 private: true
 ---
-In my game you control a small society of "block people". You don't control them directly as you do in most RTS games like Starcraft or Age of Empires. Instead, you give orders to your society as a whole.
+Please check out last week's [introduction post](/my-story-so-far.html) if you haven't already.
+
+For the last couple of weeks I've been working on pathfinding. It is a tremendously exciting subject! However, before we dive in I would like to tell you something about how the controls work in my game.
+
+In the game you command a small society of "block people". You don't control each individual directly as you do in most RTS games like Starcraft or Age of Empires. Instead, you give orders to your society as a whole.
 
 <p class="photo">
   <img src="/assets/images/game-ss1.jpg" /><br>
-  Admittedly, this doesn't look much like a "society" yet
+  Admittedly, this doesn't look much like a society yet
 </p>
 
 Exactly who does what and when is up to the block people themselves. They try to carry out your high level commands in the most effective manner they can "think" of. This control scheme is also seen in [The Settlers](http://en.wikipedia.org/wiki/The_Settlers) and [Banished](http://www.shiningrocksoftware.com/game/). Great games. The idea is to relieve the commander (that's you!) from tedious micro-management and thereby giving more focus to the grand strategy.
@@ -26,7 +30,7 @@ I decided to use the popular [A* algorithm](http://en.wikipedia.org/wiki/A*_sear
 
 The A* algorithm does a lot of book-keeping. While it searches the map it is continously storing information about each potential path. This information is stored in various data containers. The overall performance of the algorithm is, to a large extent, determined by the design and implementation of these containers.
 
-For the containers I could use [C++'s STL](http://en.wikipedia.org/wiki/Standard_Template_Library). As you may know, a [lot](http://gamedev.stackexchange.com/questions/268/stl-for-games-yea-or-nay) has been [said](http://simonask.tumblr.com/post/59763277483/why-stl-isnt-great-for-game-development) about STL, especially in game development circles. Personally, I don't like it for two reasons:
+I considered using [C++'s Standard Template Library](http://en.wikipedia.org/wiki/Standard_Template_Library) (STL) for the containers. As you may know, a [lot](http://gamedev.stackexchange.com/questions/268/stl-for-games-yea-or-nay) has been [said](http://simonask.tumblr.com/post/59763277483/why-stl-isnt-great-for-game-development) about STL, especially in game development circles. Personally, I don't like it for two reasons:
 
 * It's too general. They try to do everything and end up being really good at nothing.
 * It's too hung up on object oriented paradigms for my taste. I am not big fan of constructors, destructors, RAII, etc.
@@ -95,4 +99,4 @@ And at long last for this post's grand finale. A video!
 
 Integrating pathfinding into the game is also a very interesting subject. How should the block dudes transform a path into movement/rotation? How should changes in the terrain be managed? What if an obstacle appears after the path has been calculated? Etc. Maybe that should be the topic for the next post.
 
-Well, that's it for now. I hope you enjoyed reading. I am still new at this devlogging thing and very curious to hear what you think. Feel free to drop me an email with any feedback you might have (address below). I would love to hear from you.
+Well, that's it for now. I hope you enjoyed reading. If you did, please consider signing up for the email newsletter in the form below. I am still new at this devlogging thing and very curious to hear what you think. Feel free to drop me an email with any feedback you might have (address below). I would love to hear from you.
