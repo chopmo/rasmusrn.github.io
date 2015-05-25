@@ -4,7 +4,7 @@ layout: "post"
 date:   2015-05-26 14:30:00
 private: true
 ---
-In the [last post](/pathfinding.html) I talked about pathfinding. In this post I would like to talk about how I integrated pathfinding and other systems into the rest of the game.
+In the [last post](/pathfinding.html) I talked about pathfinding. In this post I want to talk about how I integrated pathfinding and other systems into the rest of the game.
 
 I have always found it difficult to integrate game systems such as rendering, physics, AI, networking, etc. It is fairly easy to make things work. However, it can be very tricky to make systems work together in a way that is elegant, decoupled, and flexible. I think I have more than 25 scrapped designs/architectures implemented in various languages lying around. However, over the last couple of months I have finally managed to come up with a solution I like. It feels great.
 
@@ -17,17 +17,17 @@ I have always found it difficult to integrate game systems such as rendering, ph
 
 Put shortly my solution is a [*data oriented*](http://gamesfromwithin.com/data-oriented-design) implementation of the [*entity/component system*](http://en.wikipedia.org/wiki/Entity_component_system) (ECS) architectural pattern.
 
-The ultra short introduction to ECS is that everything is modelled as *components*. Components are simple data structures that is updated by certain *systems*. For example if you attach a `GravityComponent` to a game entity the `GravitySystem` will apply gravity to that entity.
+The ultra short introduction to ECS is that all behavior is modelled as *components*. Components are simple data structures that are updated by certain *systems*. For example, if you attach a `GravityComponent` to a game entity the `GravitySystem` will apply gravity to that entity.
 
-If you want a certain behavior, you must create the corresponding component. For example, if you want to add air drag in my game, you would write:
+If you want a certain behavior you must create the corresponding component. For example, if you want to add air drag in my game, you would write:
 
 {% highlight cpp %}
 DragHandle dragHandle = DragSystem::create(rigidBodyHandle);
 {% endhighlight %}
 
-`DragSystem#update()` will then, for each created drag component, use the passed `rigidBodyHandle` to apply drag force to the corresponding rigid body. You stop the behavior by calling `DragSystem::destroy(dragHandle)`.
+`DragSystem::update()` will then process each drag component. It will use `rigidBodyHandle` to apply drag force to the corresponding rigid body. You stop the behavior by calling `DragSystem::destroy(dragHandle)`.
 
-In my ECS implementation an entity is nothing more than a unique integer: `EntityHandle`. There is no `Entity` class. To apply behavior to an entity, you create the associated component as described above, and link it to an entity like this:
+In my ECS implementation an entity is nothing more than a unique integer: `EntityHandle`. There is no `Entity` class. To apply behavior to an entity you create the associated component as described above and link it to an entity like this:
 
 {% highlight cpp %}
 EntityHandle entity = EntityManager::create();
@@ -41,14 +41,14 @@ ComponentManager::link(entity, ComponentType::Drag, drag);
 
 If you are wondering why I'm using *handles* (plain old integers) instead of pointers, check out the awesome [Molecular Musings blog](https://molecularmusings.wordpress.com/2013/05/17/adventures-in-data-oriented-design-part-3b-internal-references/).
 
-Notice how the `Physics` and the `Drag` systems don't know anything about entities or component managers. Some higher level systems, such as AI, might *want* to know about entites, but it isn't required. The only requirement is that systems somehow provide one or more functions that create and destroy components.
+Notice how the `Physics` and the `Drag` systems don't know anything about entities or component managers. Some higher level systems, such as AI, might *want* to know about entites but it isn't required. The only requirement is that systems allow for components to be created and destroyed.
 
 <p class="photo">
   <img src="/assets/images/notebook.jpg" style="width: 400px"><br>
   My appropriately named notebook
 </p>
 
-The code above might seem cumbersome but I think it is worth it. To make it easier to work with I made a convenience layer called `Database`. Below you see what the example above would look like when using the `Database` abstraction:
+The above code might seem cumbersome but I think it is worth it. To make the code easier to work with I made a convenience layer called `Database`. Using `Database` the example presented above looks like this:
 
 {% highlight cpp %}
 EntityHandle entity = Database::create();
@@ -56,7 +56,7 @@ Database::createRigidBody(entity);
 Database::createDrag(entity);
 {% endhighlight %}
 
-With all this in place, I can make an entity just by creating and linking its constituent components. Technically, there is no such thing as a coherent entity. The image of an entity that appears on screen is just a manifestation of the structured chaos of components being created, destroyed, and updated by their corresponding systems. Isn't that beautiful? Forgive me for this far-fetched association, but I think that is a bit like how nature works. In the real world an apple doesn't fall because it somehow knows apples ought to fall. It falls because it has mass (a component) and mass is affected by gravity (a system). Maybe that is part of the reason for why this architecture works so well in games.
+With this architecture I can make an entity just by creating and linking its constituent components. Technically, there is no such thing as a coherent entity. The image of an entity that appears on screen is just a manifestation of the structured chaos of components being created, destroyed, and updated by their corresponding systems. Isn't that beautiful? Forgive me for this far-fetched association but I think that it is a bit like how nature works. In the real world an apple doesn't fall because it somehow knows that apples ought to fall. It falls because it has mass (a component) and mass is affected by gravity (a system). Maybe that is part of the reason why this architecture works so well in games.
 
 <p class="photo">
   <img src="/assets/images/no-spoon.jpg" style="width: 650px"><br>
@@ -65,7 +65,7 @@ With all this in place, I can make an entity just by creating and linking its co
 
 ## Example
 
-Now that I have covered the basic idea about the integration design, we can look at some specific systems and how they are coupled. Below is a simplified high level overview of some of the game's systems. Notice the directions of the arrows. An arrow from A to B means A has a one-way dependency on B.
+I have covered the basic idea about the integration design. We can now look at some specific systems and how they are coupled. Below is a simplified high level overview of some of the game's systems. Notice the directions of the arrows. An arrow from A to B means A has a one-way dependency on B.
 
 <p class="photo">
   <svg width="950" height="200" style="background: rgb(51, 84, 136)">
@@ -111,7 +111,7 @@ Now that I have covered the basic idea about the integration design, we can look
   Systems overview
 </p>
 
-Most systems have only a single dependency. A few systems have none. I like that because it is usually a sign of good decoupling. It also makes it easier to think in terms of input/output which is a central part of [data oriented programming](http://gamesfromwithin.com/data-oriented-design) (which is awesome).
+Most systems have only a single dependency. A few systems have no dependencies at all. I like that because it is usually a sign of good decoupling. It also makes it easier to think in terms of input/output which is a central part of [data oriented programming](http://gamesfromwithin.com/data-oriented-design) (which is awesome).
 
 Here's a summary of each system's responsibilities (with respect to the chart above):
 
@@ -158,9 +158,9 @@ namespace SteeringSystem {
 }
 {% endhighlight %}
 
-## Next up
+## Up next
 
-All things considered, I am very happy with this design. It feels like a strong foundation for the upcoming systems and features. Speaking of this, my next major task will be to implement AI. I think I'll go for the [behavior tree](http://www.gamasutra.com/blogs/ChrisSimpson/20140717/221339/Behavior_trees_for_AI_How_they_work.php) modelling technique although that [will not be trivial](https://web.archive.org/web/20140217141804/http://www.altdevblogaday.com/2011/04/24/data-oriented-streams-spring-behavior-trees/) to implement in a data oriented fashion. We'll see. Thanks for stopping by. I hope you enjoyed reading.
+All things considered, I am very happy with this design. It feels like a strong foundation for the upcoming systems and features. Speaking of which, my next major task will be to implement AI. I think I'll go for the [behavior tree](http://www.gamasutra.com/blogs/ChrisSimpson/20140717/221339/Behavior_trees_for_AI_How_they_work.php) modelling technique although that [will not be trivial](https://web.archive.org/web/20140217141804/http://www.altdevblogaday.com/2011/04/24/data-oriented-streams-spring-behavior-trees/) to implement in a data oriented fashion. We'll see. Thanks for stopping by. I hope you enjoyed reading.
 
 <p class="photo">
   <img src="/assets/images/game-ss1.jpg" style="width: 500px"><br>
