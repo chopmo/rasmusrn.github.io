@@ -22,7 +22,7 @@ The ultra short introduction to ECS is that world objects are modelled as *entit
 If you want a certain behavior you must create the corresponding component. For example, if you want to add air drag in my game, you would write:
 
 {% highlight cpp %}
-DragHandle dragHandle = DragSystem::create(rigidBodyHandle);
+DragHandle drag = DragSystem::create(rigidBody);
 {% endhighlight %}
 
 <!-- 
@@ -39,7 +39,7 @@ Why does the drag need to be linked to the entity at all when it references
 the rigid body? 
 -->
 
-`DragSystem::update()` will then process each drag component. It will use `rigidBodyHandle` to apply drag force to the corresponding rigid body. You stop the behavior by calling `DragSystem::destroy(dragHandle)`.
+`DragSystem::update()` will then process each drag component. It will use `rigidBody` to apply drag force to the corresponding rigid body. You stop the behavior by calling `DragSystem::destroy(drag)`.
 
 In my ECS implementation an entity is nothing more than a unique integer: `EntityHandle`. There is no `Entity` class. To apply behavior to an entity you create the associated component as described above and link it to an entity like this:
 
