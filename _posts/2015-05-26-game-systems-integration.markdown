@@ -25,6 +25,20 @@ If you want a certain behavior you must create the corresponding component. For 
 DragHandle dragHandle = DragSystem::create(rigidBodyHandle);
 {% endhighlight %}
 
+<!-- 
+So the drag component (dragHandle) is created with a reference to another
+component (rigidBodyHandle)? Until this point I assumed that components were
+independent. So my first thought was: Why is the drag not applied to the
+entity itself? 
+
+But of course an entity is just an integer. So components work on each other. 
+My guess is that the rigid body is the component that contains the data
+affected by drag. Could this be described in a few words?
+
+Why does the drag need to be linked to the entity at all when it references
+the rigid body? 
+-->
+
 `DragSystem::update()` will then process each drag component. It will use `rigidBodyHandle` to apply drag force to the corresponding rigid body. You stop the behavior by calling `DragSystem::destroy(dragHandle)`.
 
 In my ECS implementation an entity is nothing more than a unique integer: `EntityHandle`. There is no `Entity` class. To apply behavior to an entity you create the associated component as described above and link it to an entity like this:
