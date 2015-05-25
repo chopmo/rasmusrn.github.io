@@ -4,9 +4,9 @@ layout: "post"
 date:   2015-05-26 14:30:00
 private: true
 ---
-In the [last post](/pathfinding.html) I talked about pathfinding. In this post I would to talk about how I integrated pathfinding and other systems into the rest of the game.
+In the [last post](/pathfinding.html) I talked about pathfinding. In this post I would like to talk about how I integrated pathfinding and other systems into the rest of the game.
 
-I have always found it difficult to integrate game systems such as rendering, physics, AI, networking, etc. It is fairly easy to make things work. However, it can be very tricky to make systems work together in a a way that is elegant, decoupled, and flexible. I think I have more than 25 scrapped designs/architectures implemented in various languages lying around. However, over the last couple of months I have finally managed to come up with a solution I like. It feels great.
+I have always found it difficult to integrate game systems such as rendering, physics, AI, networking, etc. It is fairly easy to make things work. However, it can be very tricky to make systems work together in a way that is elegant, decoupled, and flexible. I think I have more than 25 scrapped designs/architectures implemented in various languages lying around. However, over the last couple of months I have finally managed to come up with a solution I like. It feels great.
 
 <p class="photo">
   <img src="/assets/images/startrek-yes-meme.jpg"><br>
@@ -27,7 +27,7 @@ DragHandle dragHandle = DragSystem::create(rigidBodyHandle);
 
 `DragSystem#update()` will then, for each created drag component, use the passed `rigidBodyHandle` to apply drag force to the corresponding rigid body. You stop the behavior by calling `DragSystem::destroy(dragHandle)`.
 
-In my ECS implementation an entity is nothing more than an unique integer: `EntityHandle`. There is no `Entity` class. To apply behavior to an entity, you create the associated component as described above, and link it to an entity like this:
+In my ECS implementation an entity is nothing more than a unique integer: `EntityHandle`. There is no `Entity` class. To apply behavior to an entity, you create the associated component as described above, and link it to an entity like this:
 
 {% highlight cpp %}
 EntityHandle entity = EntityManager::create();
@@ -56,7 +56,7 @@ Database::createRigidBody(entity);
 Database::createDrag(entity);
 {% endhighlight %}
 
-With all this in place, I can make an entity just by creating and linking its constiuent components. Technically, there is no such thing as a coherent entity. The image of an entity that appears on screen is just a manifestation of the structured chaos of components being created, destroyed, and updated by their corresponding systems. Isn't that beautiful? Forgive me for this far-fetched association, but I think that is a bit like how nature works. In the real world an apple doesn't fall because it somehow knows apples ought to fall. It falls because it has mass (a component) and mass is affected by gravity (a system). Maybe that is part of the reason for why this architecture works so well in games.
+With all this in place, I can make an entity just by creating and linking its constituent components. Technically, there is no such thing as a coherent entity. The image of an entity that appears on screen is just a manifestation of the structured chaos of components being created, destroyed, and updated by their corresponding systems. Isn't that beautiful? Forgive me for this far-fetched association, but I think that is a bit like how nature works. In the real world an apple doesn't fall because it somehow knows apples ought to fall. It falls because it has mass (a component) and mass is affected by gravity (a system). Maybe that is part of the reason for why this architecture works so well in games.
 
 <p class="photo">
   <img src="/assets/images/no-spoon.jpg" style="width: 650px"><br>
@@ -160,7 +160,7 @@ namespace SteeringSystem {
 
 ## Next up
 
-All things considered, I am very happy this design. It feels like a strong foundation for the upcoming systems and features. Speaking of this, my next major task will be to implement AI. I think I'll go for the [behavior tree](http://www.gamasutra.com/blogs/ChrisSimpson/20140717/221339/Behavior_trees_for_AI_How_they_work.php) modelling technique although that [will not be trivial](https://web.archive.org/web/20140217141804/http://www.altdevblogaday.com/2011/04/24/data-oriented-streams-spring-behavior-trees/) to implement in a data oriented fashion. We'll see. Thanks for stopping by. I hope you enjoyed reading.
+All things considered, I am very happy with this design. It feels like a strong foundation for the upcoming systems and features. Speaking of this, my next major task will be to implement AI. I think I'll go for the [behavior tree](http://www.gamasutra.com/blogs/ChrisSimpson/20140717/221339/Behavior_trees_for_AI_How_they_work.php) modelling technique although that [will not be trivial](https://web.archive.org/web/20140217141804/http://www.altdevblogaday.com/2011/04/24/data-oriented-streams-spring-behavior-trees/) to implement in a data oriented fashion. We'll see. Thanks for stopping by. I hope you enjoyed reading.
 
 <p class="photo">
   <img src="/assets/images/game-ss1.jpg" style="width: 500px"><br>
