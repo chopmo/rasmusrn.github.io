@@ -134,7 +134,7 @@ Most systems have only a single dependency. A few systems have no dependencies a
 Here's a summary of each system's responsibilities (with respect to the chart above):
 
 * AI: High level decision making. Uses the pathfinding system to create and configure pathfinding components.
-* Pathfinding: Uses A* to recalculate paths with certain intervals. Checks waypoints and uses steering system to adjust current direction on steering components.
+* Pathfinding: Uses A* to recalculate paths with certain intervals. Checks waypoints and uses steering system to adjust current direction on steering components. This system was the topic of my [last post](/pathfinding.html).
 * Steering: Converts each component's direction into force and torque that is applied to the corresponding rigid body component in the physics system.
 * Physics: Updates position, velocity, and spin based on applied force and torque. Also performs collision detection/resolution. Updated at a [fixed interval](http://gafferongames.com/game-physics/fix-your-timestep/).
 * Interpolation: This system updates at a [smaller interval](http://gafferongames.com/game-physics/fix-your-timestep/) and generates interpolated positions, velocities, and orientations based on recent values retrieved from the physics system. This enables smooth rendering even though physics only run at ~33fps.
