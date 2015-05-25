@@ -56,7 +56,9 @@ Database::createRigidBody(entity);
 Database::createDrag(entity);
 {% endhighlight %}
 
-With this architecture I can make an entity just by creating and linking its constituent components. Technically, there is no such thing as a coherent entity. The image of an entity that appears on screen is just a manifestation of the structured chaos of components being created, destroyed, and updated by their corresponding systems. Isn't that beautiful? Forgive me for this far-fetched association but I think that it is a bit like how nature works. In the real world an apple doesn't fall because it somehow knows that apples ought to fall. It falls because it has mass (a component) and mass is affected by gravity (a system). Maybe that is part of the reason why this architecture works so well in games.
+With this architecture I can make an entity just by creating and linking its constituent components. Technically, there is no such thing as a coherent entity. The image of an entity that appears on screen is just a manifestation of the structured chaos of components being created, destroyed, and updated by their corresponding systems. Isn't that beautiful? 
+
+Forgive me for this far-fetched association but I think that it is a bit like how nature works. In the real world an apple doesn't fall because it somehow knows that apples ought to fall. It falls because it has mass (a component) and mass is affected by gravity (a system). Maybe that is part of the reason why this architecture works so well in games.
 
 <p class="photo">
   <img src="/assets/images/no-spoon.jpg" style="width: 650px"><br>
