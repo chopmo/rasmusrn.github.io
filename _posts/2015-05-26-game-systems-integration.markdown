@@ -43,6 +43,8 @@ the rigid body?
 
 In my ECS implementation an entity is nothing more than a unique integer: `EntityHandle`. There is no `Entity` class. To apply behavior to an entity you create the associated component as described above and link it to an entity like this:
 
+<!-- So what exactly is `EntityHandle`...a typecast of an integer? -->
+
 {% highlight cpp %}
 EntityHandle entity = EntityManager::create();
 
