@@ -48,7 +48,7 @@ Notice how the `Physics` and the `Drag` systems don't know anything about entiti
   My appropriately named notebook
 </p>
 
-The above code might seem cumbersome but I think it is worth it. To make the code easier to work with I made a convenience layer called `Database`. Using `Database` the example presented above looks like this:
+The above code might seem cumbersome but I think the loose coupling more than justifies the added verbosity. To make the code easier to work with I made a convenience layer called `Database`. Using `Database` the example presented above looks like this:
 
 {% highlight cpp %}
 EntityHandle entity = Database::create();
