@@ -17,7 +17,7 @@ I have always found it difficult to integrate game systems such as rendering, ph
 
 Put shortly my solution is a [*data oriented*](http://gamesfromwithin.com/data-oriented-design) implementation of the [*entity/component system*](http://en.wikipedia.org/wiki/Entity_component_system) (ECS) architectural pattern.
 
-The ultra short introduction to ECS is that all behavior is modelled as *components*. Components are simple data structures that are updated by certain *systems*. For example, if you attach a `GravityComponent` to a game entity the `GravitySystem` will apply gravity to that entity.
+The ultra short introduction to ECS is that world objects are modelled as *entities* and behavior is modelled as *components*. Components are simple data structures that are updated by certain *systems*. For example, if you attach a `GravityComponent` to a game entity the `GravitySystem` will apply gravity to that entity.
 
 If you want a certain behavior you must create the corresponding component. For example, if you want to add air drag in my game, you would write:
 
