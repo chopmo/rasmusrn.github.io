@@ -1,8 +1,7 @@
 ---
 title:  "Game systems integration"
 layout: "post"
-date:   2015-05-26 14:30:00
-private: true
+date:   2015-05-26 15:30:00
 ---
 In the [last post](/pathfinding.html) I talked about pathfinding. In this post I want to talk about how I integrated pathfinding and other systems into the rest of the game.
 

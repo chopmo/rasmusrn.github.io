@@ -2,7 +2,6 @@
 title:  "Pathfinding"
 layout: "post"
 date:   2015-05-10 16:00:00
-private: false
 ---
 Please check out last week's [introduction post](/my-story-so-far.html) if you haven't already.
 
