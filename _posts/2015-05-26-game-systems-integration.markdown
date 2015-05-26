@@ -17,26 +17,30 @@ I have always found it difficult to integrate game systems such as rendering, ph
 
 Put shortly my solution is a [*data oriented*](http://gamesfromwithin.com/data-oriented-design) implementation of the [*entity/component system*](http://en.wikipedia.org/wiki/Entity_component_system) (ECS) architectural pattern.
 
-The ultra short introduction to ECS is that all behavior is modelled as *components*. Components are simple data structures that are updated by certain *systems*. For example, if you attach a `GravityComponent` to a game entity the `GravitySystem` will apply gravity to that entity.
+Let me give an ultra short introduction to the ECS pattern. Data is modelled as simple data structures called *components* (typically plain old structs). Each component type is updated by its corresponding *system*. For example, `GravitySystem` would process all `GravityComponent` instances. *Entities* are just a way of grouping components into logical units. For example, a monster entity would typically have several associated components: `GravityComponent`, `AIComponent`, `RenderingComponent`, etc. If you destroy the monster its associated components will be destroyed too.
 
-If you want a certain behavior you must create the corresponding component. For example, if you want to add air drag in my game, you would write:
+As with most software patterns ECS can be implemented in various ways. In my game, if you want to add air drag you would write:
 
 {% highlight cpp %}
 DragHandle dragHandle = DragSystem::create(rigidBodyHandle);
 {% endhighlight %}
 
-`DragSystem::update()` will then process each drag component. It will use `rigidBodyHandle` to apply drag force to the corresponding rigid body. You stop the behavior by calling `DragSystem::destroy(dragHandle)`.
+A `DragHandle` is an integer that identifies a certain drag component. For example, it can be used to stop the drag behavior: `DragSystem::destroy(dragHandle)`.
+
+Systems and the corresponding component types can reference other component types if need be. This is once such example: drag components are dependent on rigid body components, so they require a `rigidBodyHandle` to be created.
+
+When `DragSystem::update()` is called as part of the game loop, it will process each drag component. It will use the `rigidBodyHandle` handle to apply drag force to the corresponding `RigidBodyComponent`.
 
 In my ECS implementation an entity is nothing more than a unique integer: `EntityHandle`. There is no `Entity` class. To apply behavior to an entity you create the associated component as described above and link it to an entity like this:
 
 {% highlight cpp %}
-EntityHandle entity = EntityManager::create();
+EntityHandle entityHandle = EntityManager::create();
 
-RigidBodyHandle rigidBody = Physics::createRigidBody();
-ComponentManager::link(entity, ComponentType::RigidBody, rigidBody);
+RigidBodyHandle rigidBodyHandle = Physics::createRigidBody();
+ComponentManager::link(entityHandle, ComponentType::RigidBody, rigidBodyHandle);
 
 DragHandle drag = DragSystem::create(rigidBody);
-ComponentManager::link(entity, ComponentType::Drag, drag);
+ComponentManager::link(entityHandle, ComponentType::Drag, dragHandle);
 {% endhighlight %}
 
 If you are wondering why I'm using *handles* (plain old integers) instead of pointers, check out the awesome [Molecular Musings blog](https://molecularmusings.wordpress.com/2013/05/17/adventures-in-data-oriented-design-part-3b-internal-references/).
@@ -48,15 +52,17 @@ Notice how the `Physics` and the `Drag` systems don't know anything about entiti
   My appropriately named notebook
 </p>
 
-The above code might seem cumbersome but I think it is worth it. To make the code easier to work with I made a convenience layer called `Database`. Using `Database` the example presented above looks like this:
+The above code might seem cumbersome but I think the loose coupling more than justifies the added verbosity. To make the code easier to work with I made a convenience layer called `Database`. Using `Database` the example presented above looks like this:
 
 {% highlight cpp %}
-EntityHandle entity = Database::create();
-Database::createRigidBody(entity);
-Database::createDrag(entity);
+EntityHandle entityHandle = Database::create();
+Database::createRigidBody(entityHandle);
+Database::createDrag(entityHandle);
 {% endhighlight %}
 
-With this architecture I can make an entity just by creating and linking its constituent components. Technically, there is no such thing as a coherent entity. The image of an entity that appears on screen is just a manifestation of the structured chaos of components being created, destroyed, and updated by their corresponding systems. Isn't that beautiful? Forgive me for this far-fetched association but I think that it is a bit like how nature works. In the real world an apple doesn't fall because it somehow knows that apples ought to fall. It falls because it has mass (a component) and mass is affected by gravity (a system). Maybe that is part of the reason why this architecture works so well in games.
+With this architecture I can make an entity just by creating and linking its constituent components. Technically, there is no such thing as a coherent entity. The image of an entity that appears on screen is just a manifestation of the structured chaos of components being created, destroyed, and updated by their corresponding systems. Isn't that beautiful?
+
+Forgive me for this far-fetched association but I think that this is a bit like how nature works. In the real world an apple doesn't fall because it somehow knows that apples ought to fall. It falls because it has mass (a component) and mass is affected by gravity (a system). Maybe that is part of the reason why this architecture works so well in games.
 
 <p class="photo">
   <img src="/assets/images/no-spoon.jpg" style="width: 650px"><br>
@@ -116,7 +122,7 @@ Most systems have only a single dependency. A few systems have no dependencies a
 Here's a summary of each system's responsibilities (with respect to the chart above):
 
 * AI: High level decision making. Uses the pathfinding system to create and configure pathfinding components.
-* Pathfinding: Uses A* to recalculate paths with certain intervals. Checks waypoints and uses steering system to adjust current direction on steering components.
+* Pathfinding: Uses A* to recalculate paths with certain intervals. Checks waypoints and uses steering system to adjust current direction on steering components. Pathfinding was the topic of [my last post](/pathfinding.html).
 * Steering: Converts each component's direction into force and torque that is applied to the corresponding rigid body component in the physics system.
 * Physics: Updates position, velocity, and spin based on applied force and torque. Also performs collision detection/resolution. Updated at a [fixed interval](http://gafferongames.com/game-physics/fix-your-timestep/).
 * Interpolation: This system updates at a [smaller interval](http://gafferongames.com/game-physics/fix-your-timestep/) and generates interpolated positions, velocities, and orientations based on recent values retrieved from the physics system. This enables smooth rendering even though physics only run at ~33fps.
