@@ -44,7 +44,7 @@ ComponentManager::link(entityHandle, ComponentType::Drag, dragHandle);
 
 If you are wondering why I'm using *handles* (plain old integers) instead of pointers, check out the awesome [Molecular Musings blog](https://molecularmusings.wordpress.com/2013/05/17/adventures-in-data-oriented-design-part-3b-internal-references/).
 
-Notice how the `Physics` and the `Drag` systems don't know anything about entities or component managers. Some higher level systems, such as AI, might *want* to know about entites but it isn't required. The only requirement is that systems allow for components to be created and destroyed.
+Notice how the `Physics` and the `Drag` systems don't know anything about entities or component managers. Some higher level systems, such as AI, might *want* to know about entities but it isn't required. The only requirement is that systems allow for components to be created and destroyed.
 
 <p class="photo">
   <img src="/assets/images/notebook.jpg" style="width: 400px"><br>
