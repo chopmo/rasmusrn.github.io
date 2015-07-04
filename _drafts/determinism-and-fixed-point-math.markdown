@@ -1,7 +1,7 @@
 ---
 title:  "Determinism with fixed point math"
 layout: "post"
-date:   2015-05-10 10:10:00
+date:   2015-07-07 10:00:00
 ---
 My girlfriend and I felt like shaking up our daily life a little. So we decided to move to *Budapest* for a month. We arrived two weeks ago and so far it has been great. Only thing is that I am not that good with high temperatures. Here is my new best friend:
 
@@ -9,7 +9,7 @@ My girlfriend and I felt like shaking up our daily life a little. So we decided 
   <img src="/assets/images/fan.jpg" style="width: 400px">
 </p>
 
-As we had hoped, the new environment begets new thoughts. It's very interesting how the mind is affected. Perhaps I'll write a full post about the experience when I get back home. But enough with that. Today I'm going to talk about network synchronization, determinism, and fixed point math.
+As we had hoped, the new environment begets new thoughts. It's very interesting how the mind is affected. Perhaps I will write a full post about the experience when I get back home. But enough with that. Today I am going to talk about network synchronization, determinism, and fixed point math.
 
 ## Network synchronization
 
@@ -115,7 +115,7 @@ Because of these drawbacks I will probably only use Fixie in parts of the game w
 
 Full source of Fixie is available on GitHub [here](https://github.com/rasmusrn/fixie).
 
-Learning about fixed point math and implementing Fixie have been great fun. Next, I need to actually integrate it into the game's state simulation logic. When the state simulation is fully deterministic, I should be able to synchronize thousands of entities across the network. It will be glorious!
+It has fun and educational to implement my own fixed point math library. Now that my game's backend is based on this library I should be able to synchronize thousands of entities across the network. It will be glorious!
 
 If you want to know more about fixed point math I recommend these great articles:
 
@@ -125,7 +125,7 @@ If you want to know more about fixed point math I recommend these great articles
 
 ## Up next
 
-I'm currently working on two things:
+I am currently working on two things for the game:
 
 * AI: Deciding and coordinating behavior and high level actions.
 * Backend/frontend architecture: Decoupling state simulation logic from client presentation logic.
