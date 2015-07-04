@@ -2,6 +2,7 @@
 title:  "Determinism with fixed point math"
 layout: "post"
 date:   2015-07-07 10:00:00
+private: true
 ---
 My girlfriend and I felt like shaking up our daily life a little. So we decided to move to *Budapest* for a month. We arrived two weeks ago and so far it has been great. Only thing is that I am not that good with high temperatures. Here is my new best friend:
 
