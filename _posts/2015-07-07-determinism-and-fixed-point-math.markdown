@@ -16,7 +16,7 @@ As we had hoped, the new environment begets new thoughts. It's very interesting 
 
 A couple of months ago I got the idea that my game would be much better if you control a group of characters instead of just one. I decided I had to give it a try.
 
-For technical reasons this meant I would have to use the socalled *lockstep* network synchronization technique. Most RTS games uses it because it lets you synchronize hundreds (if not thousands) of entities over the internet. It is awesome, actually. With the regular *authoritative server model*, the game server simulates the game and send state updates to clients. This becomes infeasible if you have many entities. However, with the lockstep technique, each client simulates the entire game themself so the server doesn't have to send state updates.
+For technical reasons this meant I would have to use the socalled *lockstep* network synchronization technique. Most RTS games uses it because it lets you synchronize hundreds (if not thousands) of entities over the internet. It is awesome, actually. With the regular *authoritative server model*, the game server simulates the game and send state updates to clients. This becomes infeasible if you have many entities. However, with the lockstep technique each client simulates the entire game themself so the server does not have to send state updates.
 
 But it comes at a price: your game state simulation must be 100% deterministic down to the very last bit. Even the tiniest differences would accumulate over time and cause problems. Unfortunately, achieving full cross platform determinism is not easy.
 
@@ -87,7 +87,7 @@ public:
 
 `raw` is the internal base integer number, in my case the number of 1/1024s. `Num x = 2` would yield an instance where raw is set to 2048.
 
-Writing the division operator was a bit more [challenging and interesting](stackoverflow.com/questions/2422712/c-rounding-integer-division-instead-of-truncating/29533500). Getting the rounding right with both positive and negative numbers was tricky. The code is not easy to understand, but I thought you might appreciate it anyway:
+Writing the division operator was a bit more [challenging and interesting](http://stackoverflow.com/questions/2422712/c-rounding-integer-division-instead-of-truncating/29533500). Getting the rounding right with both positive and negative numbers was tricky. The code is not easy to understand, but I thought you might appreciate it anyway:
 
 {% highlight cpp %}
 class Num {
@@ -110,9 +110,9 @@ I used the basic `Fixie::Num` datatype as a building block to implement vectors,
 
 ## Usage and limitations
 
-It is important to note that fixed point math has limitations. It generally supports fewer significant digits that floating point so you'll get lower precision and smaller numeric ranges. That is not a problem for my game though, it might be for yours.
+It is important to note that fixed point math has limitations. It generally supports fewer significant digits than floating point so you'll get lower precision and smaller numeric ranges. That is not a problem for my game though, it might be for yours.
 
-Because of these drawbacks I will probably only use Fixie in parts of the game where I need determinisn. That basically involves everything that needs to be synchornized between clients: physics, pathfinding, AI, etc. Anything presentation related like rendering and animation is not required to be 100% synchronized so here I can stick with good old floating point.
+Because of these drawbacks I will probably only use Fixie in parts of the game that needs to be synchronized between clients: physics, pathfinding, AI, etc. For presentation logic such and rendering, audio, and animation I can stick with good old floating point.
 
 Full source of Fixie is available on GitHub [here](https://github.com/rasmusrn/fixie).
 
