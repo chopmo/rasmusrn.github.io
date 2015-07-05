@@ -10,13 +10,15 @@ My girlfriend and I felt like shaking up our daily life a little. So we decided 
   <img src="/assets/images/fan.jpg" style="width: 400px">
 </p>
 
-As we had hoped, the new environment begets new thoughts. It's very interesting how the mind is affected. Perhaps I will write a full post about the experience when I get back home. But enough with that. Today I am going to talk about network synchronization, determinism, and fixed point math.
+As we had hoped, the new environment begets new thoughts. It's very interesting how the mind is affected. Perhaps I will write a full post about the experience when I get back home. 
+
+But enough with that. Today I am going to talk about network synchronization, determinism, and fixed point math.
 
 ## Network synchronization
 
 A couple of months ago I got the idea that my game would be much better if you control a group of characters instead of just one. I decided I had to give it a try.
 
-For technical reasons this meant I would have to use the socalled *lockstep* network synchronization technique. Most RTS games uses it because it lets you synchronize hundreds (if not thousands) of entities over the internet. It is awesome, actually. With the regular *authoritative server model*, the game server simulates the game and send state updates to clients. This becomes infeasible if you have many entities. However, with the lockstep technique each client simulates the entire game themself so the server does not have to send state updates.
+For technical reasons this meant I would have to use the socalled *lockstep* network synchronization technique. Most RTS games uses it because it lets you synchronize hundreds (if not thousands) of entities over the internet. It is awesome, actually. With the regular *authoritative server model*, the game server simulates the game and sends state updates to clients. This becomes infeasible if you have many entities. However, with the lockstep technique each client simulates the entire game themself so the server does not have to send state updates.
 
 But it comes at a price: your game state simulation must be 100% deterministic down to the very last bit. Even the tiniest differences would accumulate over time and cause problems. Unfortunately, achieving full cross platform determinism is not easy.
 
